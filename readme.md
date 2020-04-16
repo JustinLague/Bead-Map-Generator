@@ -1,3 +1,5 @@
-Start client : npm run serve
+# Bead-Map-Generator
 
-Start Server : node app.js
+This is only a fun little project for my mom :D
+
+She wants a way to design her jewelries before doing them :D
