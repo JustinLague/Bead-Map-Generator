@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    SAlut
-    <div>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/test">test</router-link></li>
-      </ul>
-    </div>
-    <router-view></router-view>
+    <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
+import NavBar from "./components/NavBar";
 
 export default {
-  name: 'app',
-}
+  name: "app",
+  components: {
+    NavBar
+  }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

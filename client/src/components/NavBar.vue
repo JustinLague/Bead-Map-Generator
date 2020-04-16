@@ -1,20 +1,16 @@
 <template>
-  <div class="hello">
-      {{ count }}
-  </div>
+    <!-- <div>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+      </ul>
+    </div> -->
+    <router-view></router-view>
 </template>
 
 <script>
 export default {
-  name: 'nav-bar',
-  data: function() {
-    return {
-        count: 0
-  }
-}
-}
+    name: "NavBar"
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
