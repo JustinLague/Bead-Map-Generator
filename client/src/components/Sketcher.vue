@@ -1,26 +1,26 @@
 <template>
   <div>
-    <div>
-      <span class="toggleColorPicker" v-on-clickaway="closeColoPicker" v-on:click="toggleColorPicker">
+    <div class="color-picker" v-on-clickaway="closeColoPicker">
+      <span class="toggle-color-picker" v-on:click="toggleColorPicker">
         <font-awesome-icon icon="palette" />
       </span>
-      <colorPickerPopUp :showColorPicker="showColorPicker" @color="newColor" />
+      <color-picker-pop-up :showColorPicker="showColorPicker" @color="newColor" />
     </div>
-    <div style="width:400px;height:300px">
-      <div v-on:click="setColor"></div>
-    </div>
+    <div><main-grid /></div>
   </div>
 </template>
 
 <script>
 import ColorPickerPopUp from "./subComponent/ColorPickerPopUp";
+import MainGrid from "./subComponent/MainGrid";
 import { mixin as clickaway } from "vue-clickaway";
 
 export default {
   name: "Sketcher",
   mixins: [clickaway],
   components: {
-    ColorPickerPopUp
+    ColorPickerPopUp,
+    MainGrid
   },
   data() {
     return {
@@ -44,12 +44,12 @@ export default {
 </script>
 
 <style scoped>
-.toggleColorPicker:hover {
+.toggle-color-picker:hover {
   cursor: pointer;
 }
 
-.tile {
-  width: 100px;
-  height: 100px;
+.color-picker {
+  display: block;
+  width: fit-content;
 }
 </style>
