@@ -4,9 +4,9 @@
       <span class="toggle-color-picker" v-on:click="toggleColorPicker">
         <font-awesome-icon icon="palette" />
       </span>
-      <color-picker-pop-up :showColorPicker="showColorPicker" @color="newColor" />
+      <color-picker-pop-up :showColorPicker="showColorPicker" :defaultColor="color" @updateColor="updateColor" />
     </div>
-    <div><main-grid /></div>
+    <div><main-grid :color="color" /></div>
   </div>
 </template>
 
@@ -25,7 +25,14 @@ export default {
   data() {
     return {
       showColorPicker: false,
-      activeColor: "#59c7f9"
+      color: {
+        rgba: {
+          r: 255,
+          g: 255,
+          b: 255,
+          a: 1
+        }
+      }
     };
   },
   methods: {
@@ -35,10 +42,9 @@ export default {
     closeColoPicker() {
       this.showColorPicker = false;
     },
-    newColor(color) {
-      this.activeColor = color;
-    },
-    setColor() {}
+    updateColor(color) {
+      this.color = color;
+    }
   }
 };
 </script>
@@ -49,7 +55,6 @@ export default {
 }
 
 .color-picker {
-  display: block;
-  width: fit-content;
+  float: right;
 }
 </style>
