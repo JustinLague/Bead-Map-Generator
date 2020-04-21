@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="color-picker" v-on-clickaway="closeColoPicker">
       <span class="toggle-color-picker" v-on:click="toggleColorPicker">
         <font-awesome-icon icon="palette" />
@@ -37,10 +37,6 @@ export default {
 <style scoped>
 .toggle-color-picker:hover {
   cursor: pointer;
-}
-
-.containter {
-  position: relative;
 }
 
 .chrome-picker {

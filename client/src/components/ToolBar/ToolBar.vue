@@ -1,26 +1,28 @@
 <template>
-  <div>
-    <color-picker class="color-picker"></color-picker>
-    <eraser class="eraser"></eraser>
+  <div class="container">
+    <color-picker class="icon color-picker"></color-picker>
+    <eraser class="icon eraser"></eraser>
   </div>
 </template>
 
 <script>
 import ColorPicker from "./ColorPicker/ColorPicker";
+import Eraser from "./Eraser";
 
 export default {
   components: {
-    ColorPicker
+    ColorPicker,
+    Eraser
   }
 };
 </script>
 
 <style scoped>
-.color-picker {
-  font-size: 34px;
+.containter {
+  position: relative;
 }
 
-.eraser {
+.icon {
   font-size: 34px;
 }
 </style>
