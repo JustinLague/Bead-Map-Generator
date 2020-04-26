@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <color-picker class="icon color-picker"></color-picker>
+    <color-picker class="color-picker"></color-picker>
     <eraser class="icon eraser"></eraser>
   </div>
 </template>
@@ -20,6 +20,10 @@ export default {
 <style scoped>
 .containter {
   position: relative;
+}
+
+.color-pciker {
+  width: 50px;
 }
 
 .icon {

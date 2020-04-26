@@ -1,6 +1,6 @@
 <template>
   <div v-if="showColorPicker">
-    <chrome-picker @input="updateColor" :value="color"></chrome-picker>
+    <chrome-picker @input="updateColor" :value="activeColor"></chrome-picker>
   </div>
 </template>
 
@@ -14,21 +14,29 @@ export default {
     "chrome-picker": Chrome
   },
   props: {
+    color: String,
     showColorPicker: Boolean
   },
   computed: {
     ...mapState("sketcher", {
-      color: (state) => state.color
-    })
+      mainColor: (state) => state.mainColor,
+      secondaryColor: (state) => state.secondaryColor
+    }),
+    activeColor() {
+      return this.color === "mainColor" ? this.mainColor : this.secondaryColor;
+    }
   },
   methods: {
-    ...mapActions("sketcher", ["updateColor"])
+    ...mapActions("sketcher", ["updateMainColor", "updateSecondaryColor"]),
+    updateColor(color) {
+      if (this.color === "mainColor") {
+        this.updateMainColor(color);
+      } else if (this.color === "secondaryColor") {
+        this.updateSecondaryColor(color);
+      }
+    }
   }
 };
 </script>
 
-<style scoped>
-.chrome-picker {
-  position: absolute;
-}
-</style>
+<style scoped></style>

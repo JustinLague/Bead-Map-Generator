@@ -1,5 +1,5 @@
 <template>
-  <div class="sketcher">
+  <div class="sketcher" @contextmenu.prevent>
     <toolBar class="tool-bar"></toolBar>
     <main-grid class="main-grid" />
   </div>

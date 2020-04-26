@@ -1,0 +1,59 @@
+import { Rectangle } from "./models/rectangle";
+
+export class Drawing {
+  // ----------------- setup ----------------- //
+  setup = (sk) => {
+    sk.createCanvas(2000, 1020);
+    sk.background(250);
+
+    this.x = 30;
+    this.y = 20;
+    this.width = 30;
+    this.height = 20;
+    this.paddingLeft = 15;
+
+    this.rects = [];
+    for (let col = 0; col < 50; col++) {
+      for (let ran = 0; ran < 66; ran++) {
+        this.rects.push(
+          new Rectangle(
+            (col % 2) * 15 + this.paddingLeft + (ran * (this.x + this.width)) / 2,
+            (col * (this.y + this.height) + 20) / 2,
+            this.width,
+            this.height,
+            sk.color(255, 255, 255)
+          )
+        );
+      }
+    }
+  };
+
+  // ----------------- draw ----------------- //
+  draw = (sk, mainColor, secondaryColor) => {
+    this.rects.forEach((rect) => {
+      rect.show(sk);
+    });
+
+    if (sk.mouseIsPressed) {
+      this.paintRectangles(sk, mainColor, secondaryColor);
+    }
+  };
+
+  // ----------------- mouseClicked ----------------- //
+  mouseClicked = (sk, mainColor, secondaryColor) => {
+    this.paintRectangles(sk, mainColor, secondaryColor);
+  };
+
+  paintRectangles = (sk, mainColor, secondaryColor) => {
+    this.rects.forEach((rect) => {
+      if (rect.collision(sk.mouseX, sk.mouseY)) {
+        if (sk.mouseButton === "left") {
+          rect.changeColor(sk, mainColor);
+        }
+        if (sk.mouseButton === "right") {
+          rect.changeColor(sk, secondaryColor);
+        }
+      }
+    });
+  };
+}

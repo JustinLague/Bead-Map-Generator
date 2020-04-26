@@ -11,9 +11,9 @@ import { mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions("sketcher", ["updateColor"]),
+    ...mapActions("sketcher", ["updateMainColor"]),
     erase() {
-      this.updateColor({
+      this.updateMainColor({
         rgba: {
           r: 255,
           g: 255,
