@@ -12,7 +12,6 @@
       <color-picker-pop-up
         class="chrome-picker main-picker"
         :color="mainColor"
-        keyColor="mainColor"
         :showColorPicker="showColorMainPicker"
       />
     </div>
@@ -28,7 +27,6 @@
       <color-picker-pop-up
         class="chrome-picker secondairy-picker"
         :color="secondaryColor"
-        keyColor="secondaryColor"
         :showColorPicker="showColorSecondaryPicker"
       />
     </div>

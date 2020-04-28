@@ -29,9 +29,6 @@ export default {
 </script>
 
 <style scoped>
-.eraser {
-  margin: auto;
-}
 .eraser :hover {
   cursor: pointer;
 }

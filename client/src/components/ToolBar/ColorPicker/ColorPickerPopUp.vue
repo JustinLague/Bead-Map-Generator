@@ -15,12 +15,13 @@ export default {
   },
   props: {
     color: Object,
-    keyColor: String,
     showColorPicker: Boolean
   },
   data() {
+    let keyColor = Object.keys(this.color)[0];
     return {
-      activeColor: this.color[this.keyColor]
+      keyColor: keyColor,
+      activeColor: this.color[keyColor]
     };
   },
   methods: {

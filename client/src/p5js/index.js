@@ -3,7 +3,7 @@ import { Rectangle } from "./models/rectangle";
 export class Drawing {
   // ----------------- setup ----------------- //
   setup = (sk) => {
-    sk.createCanvas(2000, 1020);
+    sk.createCanvas(2045, 1015);
     sk.background(250);
 
     this.x = 30;

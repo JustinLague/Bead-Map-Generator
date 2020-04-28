@@ -26,7 +26,7 @@ const getters = {
     return { mainColor };
   },
   secondaryColor: (state) => {
-    const secondaryColor = state.colors.secondaryColor;
+    const secondaryColor = { ...state.colors.secondaryColor };
     return { secondaryColor };
   },
   mainColorRGB: (state) => {
