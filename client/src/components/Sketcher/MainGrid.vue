@@ -4,7 +4,7 @@
 <script>
 import { mapState } from "vuex";
 import VueP5 from "vue-p5";
-import { Drawing } from "../p5js";
+import { Drawing } from "./p5js";
 
 export default {
   components: {
