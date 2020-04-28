@@ -29,29 +29,29 @@ export class Drawing {
   };
 
   // ----------------- draw ----------------- //
-  draw = (sk, mainColor, secondaryColor) => {
+  draw = (sk, colors) => {
     this.rects.forEach((rect) => {
       rect.show(sk);
     });
 
     if (sk.mouseIsPressed) {
-      this.paintRectangles(sk, mainColor, secondaryColor);
+      this.paintRectangles(sk, colors);
     }
   };
 
   // ----------------- mouseClicked ----------------- //
-  mouseClicked = (sk, mainColor, secondaryColor) => {
-    this.paintRectangles(sk, mainColor, secondaryColor);
+  mouseClicked = (sk, colors) => {
+    this.paintRectangles(sk, colors);
   };
 
-  paintRectangles = (sk, mainColor, secondaryColor) => {
+  paintRectangles = (sk, colors) => {
     this.rects.forEach((rect) => {
       if (rect.collision(sk.mouseX, sk.mouseY)) {
         if (sk.mouseButton === "left") {
-          rect.changeColor(sk, mainColor);
+          rect.changeColor(sk, colors.mainColor);
         }
         if (sk.mouseButton === "right") {
-          rect.changeColor(sk, secondaryColor);
+          rect.changeColor(sk, colors.secondaryColor);
         }
       }
     });

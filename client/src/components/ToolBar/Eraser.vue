@@ -11,14 +11,16 @@ import { mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions("sketcher", ["updateMainColor"]),
+    ...mapActions("sketcher", ["updateColor"]),
     erase() {
-      this.updateMainColor({
-        rgba: {
-          r: 255,
-          g: 255,
-          b: 255,
-          a: 1
+      this.updateColor({
+        mainColor: {
+          rgba: {
+            r: 255,
+            g: 255,
+            b: 255,
+            a: 1
+          }
         }
       });
     }
@@ -29,5 +31,8 @@ export default {
 <style scoped>
 .eraser {
   margin: auto;
+}
+.eraser :hover {
+  cursor: pointer;
 }
 </style>
