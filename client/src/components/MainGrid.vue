@@ -18,20 +18,17 @@ export default {
     };
   },
   computed: {
-    ...mapState("sketcher", {
-      mainColor: (state) => state.mainColor,
-      secondaryColor: (state) => state.secondaryColor
-    })
+    ...mapState("sketcher", ["colors"])
   },
   methods: {
     setup(sk) {
       this.drawing.setup(sk);
     },
     draw(sk) {
-      this.drawing.draw(sk, this.mainColor, this.secondaryColor);
+      this.drawing.draw(sk, this.colors);
     },
     mouseClicked(sk) {
-      this.drawing.mouseClicked(sk, this.mainColor);
+      this.drawing.mouseClicked(sk, this.colors);
     }
   }
 };

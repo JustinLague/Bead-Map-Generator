@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+/* eslint-disable no-console */
 import { Chrome } from "vue-color";
 
 export default {
@@ -14,26 +14,20 @@ export default {
     "chrome-picker": Chrome
   },
   props: {
-    color: String,
+    color: Object,
     showColorPicker: Boolean
   },
-  computed: {
-    ...mapState("sketcher", {
-      mainColor: (state) => state.mainColor,
-      secondaryColor: (state) => state.secondaryColor
-    }),
-    activeColor() {
-      return this.color === "mainColor" ? this.mainColor : this.secondaryColor;
-    }
+  data() {
+    let keyColor = Object.keys(this.color)[0];
+    return {
+      keyColor: keyColor,
+      activeColor: this.color[keyColor]
+    };
   },
   methods: {
-    ...mapActions("sketcher", ["updateMainColor", "updateSecondaryColor"]),
     updateColor(color) {
-      if (this.color === "mainColor") {
-        this.updateMainColor(color);
-      } else if (this.color === "secondaryColor") {
-        this.updateSecondaryColor(color);
-      }
+      this.color[this.keyColor].rgba = color.rgba;
+      this.$store.dispatch("sketcher/updateColor", this.color);
     }
   }
 };

@@ -22,10 +22,6 @@ export default {
   position: relative;
 }
 
-.color-pciker {
-  width: 50px;
-}
-
 .icon {
   font-size: 34px;
 }

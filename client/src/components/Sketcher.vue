@@ -27,6 +27,7 @@ export default {
 .tool-bar {
   order: 1;
   flex: 1 100%;
+  padding: 10px;
 }
 
 .main-grid {

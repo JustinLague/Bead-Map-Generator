@@ -9,7 +9,11 @@
       <span class="toggle-color-picker">
         <font-awesome-icon icon="palette" />
       </span>
-      <color-picker-pop-up class="chrome-picker main-picker" color="mainColor" :showColorPicker="showColorMainPicker" />
+      <color-picker-pop-up
+        class="chrome-picker main-picker"
+        :color="mainColor"
+        :showColorPicker="showColorMainPicker"
+      />
     </div>
     <div
       class="display secondairy-color"
@@ -22,7 +26,7 @@
       </span>
       <color-picker-pop-up
         class="chrome-picker secondairy-picker"
-        color="secondaryColor"
+        :color="secondaryColor"
         :showColorPicker="showColorSecondaryPicker"
       />
     </div>
@@ -45,7 +49,9 @@ export default {
       showColorSecondaryPicker: false
     };
   },
-  computed: { ...mapGetters("sketcher", ["mainColorRGB", "secondaryColorRGB"]) },
+  computed: {
+    ...mapGetters("sketcher", ["mainColor", "mainColorRGB", "secondaryColor", "secondaryColorRGB"])
+  },
   methods: {
     toggleColorMainPicker() {
       this.showColorMainPicker = true;
