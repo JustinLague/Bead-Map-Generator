@@ -1,7 +1,14 @@
 // Import Controllers
-const HelloWorld = require('./controllers/helloWorld.controller')
+const AuthController = require("./controllers/auth.controller");
 
-module.exports = app => {
+//Import Policies
+const AuthPolicies = require("./policies/auth");
 
-  app.get('/helloWorld', HelloWorld.helloWorld)
-}
+module.exports = (app) => {
+  // Auth
+  app.post("/register", AuthController.register);
+  app.post("/login", AuthController.login);
+
+  //Test
+  //app.get("/helloWorld", AuthPolicies.verifyToken, HelloWorld.helloWorld);
+};
