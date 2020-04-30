@@ -36,6 +36,7 @@ const mutations = {
   },
   LOGIN_ERROR(state, error) {
     state.error = error;
+    state.userTryingToLogIn = false;
   },
   LOGIN(state, login) {
     state.user = login.user;

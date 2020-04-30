@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <h2>Login</h2>
+  <b-container class="form-container">
+    <h2>Connection</h2>
     <b-form @submit.prevent="handleSubmit">
-      <b-form-invalid-feedback :state="hasError">
-        {{ error }}
-      </b-form-invalid-feedback>
       <b-form-group>
         <label for="feedback-user">Nom d'utilisateur</label>
         <b-input v-model="username" id="feedback-username"></b-input>
@@ -12,12 +9,21 @@
 
       <b-form-group>
         <label for="feedback-user">Mot de passe</label>
-        <b-input v-model="password" id="feedback-password"></b-input>
+        <b-input type="password" v-model="password" id="feedback-password"></b-input>
       </b-form-group>
-      <b-button type="submit" variant="primary" :disabled="userTryingToLogIn">Login</b-button>
-      <b-spinner variant="primary" label="Spinning" v-if="userTryingToLogIn"></b-spinner>
+      <div v-if="!userTryingToLogIn">
+        <b-button type="submit" variant="primary">Se connecter</b-button>
+      </div>
+      <div v-else>
+        <b-spinner variant="primary" label="Spinning" class="spinner"></b-spinner>
+      </div>
+      <b-form-group>
+        <label class="error" :state="hasError">
+          {{ error }}
+        </label>
+      </b-form-group>
     </b-form>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -48,4 +54,21 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.form-container {
+  margin-top: 50px;
+}
+
+h2 {
+  color: #007bff;
+}
+
+.spiner {
+  margin-left: 15px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+</style>
