@@ -1,6 +1,6 @@
 <template>
   <b-container class="form-container">
-    <h2>Connection</h2>
+    <h2>Sketcher</h2>
     <b-form @submit.prevent="handleSubmit">
       <b-form-group>
         <label for="feedback-user">Nom d'utilisateur</label>
@@ -55,11 +55,14 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Copse&display=swap");
+
 .form-container {
   margin-top: 50px;
 }
 
 h2 {
+  font-family: Copse;
   color: #007bff;
 }
 

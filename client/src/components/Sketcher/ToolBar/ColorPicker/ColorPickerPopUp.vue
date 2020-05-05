@@ -1,17 +1,17 @@
 <template>
   <div v-if="showColorPicker">
-    <chrome-picker @input="updateColor" :value="activeColor"></chrome-picker>
+    <sketch-picker @input="updateColor" :value="activeColor"></sketch-picker>
   </div>
 </template>
 
 <script>
 /* eslint-disable no-console */
-import { Chrome } from "vue-color";
+import { Sketch } from "vue-color";
 
 export default {
   name: "ColorPickerPopUp",
   components: {
-    "chrome-picker": Chrome
+    "sketch-picker": Sketch
   },
   props: {
     color: Object,
