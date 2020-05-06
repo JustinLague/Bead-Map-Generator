@@ -13,3 +13,7 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+Dockerfile
+docker-compose.yml
+nginx.conf
