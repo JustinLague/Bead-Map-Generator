@@ -6,9 +6,9 @@ const AuthPolicies = require("./policies/auth");
 
 module.exports = (app) => {
   // Auth
-  app.post("/register", AuthController.register);
-  app.post("/login", AuthController.login);
+  app.post("/api/register", AuthController.register);
+  app.post("/api/login", AuthController.login);
 
   //Test
-  //app.get("/helloWorld", AuthPolicies.verifyToken, HelloWorld.helloWorld);
+  //app.get("api/helloWorld", AuthPolicies.verifyToken, HelloWorld.helloWorld);
 };
