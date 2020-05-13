@@ -34,7 +34,6 @@ const actions = {
       }
     } catch (err) {
       const serverError = err.response.data.error;
-      console.log(serverError);
       commit("LOGIN_ERROR", serverError);
     }
   },

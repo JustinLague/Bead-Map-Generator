@@ -18,7 +18,6 @@ class AuthController {
         token: generateJWT(user)
       });
     } catch (err) {
-      console.log(err);
       res.status(400).send({ error: "Le nom d'utilisateur existe déjà." });
     }
   }
