@@ -6,19 +6,21 @@ export class Drawing {
     sk.createCanvas(2045, 1015);
     sk.background(250);
 
-    this.x = 30;
-    this.y = 20;
-    this.width = 30;
-    this.height = 20;
+    this.x = 20;
+    this.y = 25;
+    this.width = 20;
+    this.height = 25;
     this.paddingLeft = 15;
+    this.paddingWidht = 10;
+    this.paddingTop = 20;
 
     this.rects = [];
-    for (let col = 0; col < 50; col++) {
-      for (let ran = 0; ran < 66; ran++) {
+    for (let col = 0; col < 40; col++) {
+      for (let ran = 0; ran < 100; ran++) {
         this.rects.push(
           new Rectangle(
-            (col % 2) * 15 + this.paddingLeft + (ran * (this.x + this.width)) / 2,
-            (col * (this.y + this.height) + 20) / 2,
+            (col % 2) * this.paddingWidht + this.paddingLeft + (ran * (this.x + this.width)) / 2,
+            (col * (this.y + this.height) + this.paddingTop) / 2,
             this.width,
             this.height,
             sk.color(255, 255, 255)
@@ -29,12 +31,12 @@ export class Drawing {
   };
 
   // ----------------- draw ----------------- //
-  draw = (sk, colors) => {
+  draw = (sk, colors, canDraw) => {
     this.rects.forEach((rect) => {
       rect.show(sk);
     });
 
-    if (sk.mouseIsPressed) {
+    if (sk.mouseIsPressed && canDraw) {
       this.paintRectangles(sk, colors);
     }
   };

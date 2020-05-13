@@ -17,7 +17,8 @@ const state = {
         a: 1
       }
     }
-  }
+  },
+  canDraw: true
 };
 
 const getters = {
@@ -42,12 +43,18 @@ const getters = {
 const actions = {
   updateColor({ commit }, color) {
     commit("UPDATE_COLOR", { color });
+  },
+  canDraw({ commit }, canDraw) {
+    commit("CAN_DRAW", canDraw);
   }
 };
 
 const mutations = {
   UPDATE_COLOR(state, { color }) {
     state.colors = { ...state.colors, ...color };
+  },
+  CAN_DRAW(state, canDraw) {
+    state.canDraw = canDraw;
   }
 };
 

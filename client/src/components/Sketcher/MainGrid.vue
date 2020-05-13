@@ -4,7 +4,7 @@
 <script>
 import { mapState } from "vuex";
 import VueP5 from "vue-p5";
-import { Drawing } from "./p5js";
+import { Drawing } from "./Drawing";
 
 export default {
   components: {
@@ -18,17 +18,17 @@ export default {
     };
   },
   computed: {
-    ...mapState("sketcher", ["colors"])
+    ...mapState("sketcher", ["colors", "canDraw"])
   },
   methods: {
     setup(sk) {
       this.drawing.setup(sk);
     },
     draw(sk) {
-      this.drawing.draw(sk, this.colors);
+      this.drawing.draw(sk, this.colors, this.canDraw);
     },
     mouseClicked(sk) {
-      this.drawing.mouseClicked(sk, this.colors);
+      if (this.canDraw) this.drawing.mouseClicked(sk, this.colors);
     }
   }
 };
