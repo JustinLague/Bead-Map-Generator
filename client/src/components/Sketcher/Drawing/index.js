@@ -31,12 +31,12 @@ export class Drawing {
   };
 
   // ----------------- draw ----------------- //
-  draw = (sk, colors) => {
+  draw = (sk, colors, canDraw) => {
     this.rects.forEach((rect) => {
       rect.show(sk);
     });
 
-    if (sk.mouseIsPressed) {
+    if (sk.mouseIsPressed && canDraw) {
       this.paintRectangles(sk, colors);
     }
   };

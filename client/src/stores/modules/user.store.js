@@ -7,7 +7,7 @@ const state = {
   token: null,
   userSignedIn: false,
   userTryingToLogIn: false,
-  error: null
+  serverError: null
 };
 
 const actions = {
@@ -20,8 +20,22 @@ const actions = {
         router.push({ name: "Sketcher" });
       }
     } catch (err) {
-      const error = err.response.data.error;
-      commit("LOGIN_ERROR", error);
+      const serverError = err.response.data.error;
+      commit("LOGIN_ERROR", serverError);
+    }
+  },
+  async register({ commit }, credential) {
+    commit("TRYING_LOGIN");
+    try {
+      const login = await userService.register(credential);
+      if (login.status === 200) {
+        commit("LOGIN", login.data);
+        router.push({ name: "Sketcher" });
+      }
+    } catch (err) {
+      const serverError = err.response.data.error;
+      console.log(serverError);
+      commit("LOGIN_ERROR", serverError);
     }
   },
   logout({ commit }) {
@@ -34,8 +48,8 @@ const mutations = {
   TRYING_LOGIN(state) {
     state.userTryingToLogIn = true;
   },
-  LOGIN_ERROR(state, error) {
-    state.error = error;
+  LOGIN_ERROR(state, serverError) {
+    state.serverError = serverError;
     state.userTryingToLogIn = false;
   },
   LOGIN(state, login) {
@@ -43,6 +57,7 @@ const mutations = {
     state.token = login.token;
     state.userSignedIn = true;
     state.userTryingToLogIn = false;
+    state.serverError = "";
   },
   LOGOUT(state) {
     state.user = null;

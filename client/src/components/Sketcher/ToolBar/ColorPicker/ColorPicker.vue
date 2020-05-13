@@ -36,7 +36,7 @@
 <script>
 import ColorPickerPopUp from "./ColorPickerPopUp";
 import { mixin as clickaway } from "vue-clickaway";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   mixins: [clickaway],
@@ -53,17 +53,31 @@ export default {
     ...mapGetters("sketcher", ["mainColor", "mainColorRGB", "secondaryColor", "secondaryColorRGB"])
   },
   methods: {
+    ...mapActions("sketcher", ["canDraw"]),
     toggleColorMainPicker() {
       this.showColorMainPicker = true;
+      this.updateCanDraw();
     },
     toggleColorSecondary() {
       this.showColorSecondaryPicker = true;
+      this.updateCanDraw();
     },
     closeColorMainPicker() {
       this.showColorMainPicker = false;
+      this.updateCanDraw();
     },
     closeColorSecondaryPicker() {
       this.showColorSecondaryPicker = false;
+      this.updateCanDraw();
+    },
+    updateCanDraw() {
+      //!XOR
+      this.canDraw(
+        !(
+          (!this.showColorMainPicker && this.showColorSecondaryPicker) ||
+          (this.showColorMainPicker && !this.showColorSecondaryPicker)
+        )
+      );
     }
   }
 };

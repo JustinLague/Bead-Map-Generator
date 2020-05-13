@@ -11,7 +11,6 @@ class AuthController {
   async register(req, res) {
     try {
       // Create user1
-      console.log(req.body);
       let user = new User(req.body);
       user = await user.save();
       res.send({
@@ -19,6 +18,7 @@ class AuthController {
         token: generateJWT(user)
       });
     } catch (err) {
+      console.log(err);
       res.status(400).send({ error: "Le nom d'utilisateur existe déjà." });
     }
   }
@@ -26,7 +26,7 @@ class AuthController {
   async login(req, res) {
     const { username, password } = req.body;
     try {
-      // Check email
+      // check username
       let user = await User.findOne({ username }).populate("queries");
       if (!user) {
         return res.status(403).send({ error: "Le nom d'utilisateur ou le mot de passe ne sont pas valide." });

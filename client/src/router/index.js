@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Login from "@/components/Login/Login";
+import LoginRegister from "@/components/Login/LoginRegister";
 import Sketcher from "@/components/Sketcher/Sketcher";
 import store from "../stores/store";
 
@@ -11,7 +11,7 @@ const router = new Router({
     {
       path: "/",
       name: "Login",
-      component: Login,
+      component: LoginRegister,
       beforeEnter: (to, from, next) => {
         if (to.name === "Login" && store.state.user.userSignedIn) next({ name: "Sketcher" });
         else next();
