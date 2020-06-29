@@ -1,6 +1,6 @@
 <template>
   <div class="sketcher" @contextmenu.prevent>
-    <toolBar class="tool-bar"></toolBar>
+    <toolBar class="tool-bar print"></toolBar>
     <main-grid class="main-grid" />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .sketcher {
   display: flex;
   flex-flow: row nowrap;
@@ -33,5 +33,15 @@ export default {
 .main-grid {
   order: 2;
   flex: 1 100%;
+}
+
+@media print {
+  body {
+    margin-top: 10px;
+    transform: rotate(90deg);
+  }
+  .print {
+    display: none;
+  }
 }
 </style>
